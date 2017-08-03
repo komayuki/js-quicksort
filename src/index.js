@@ -1,4 +1,4 @@
-function pivot (arr, i, j) {
+function get_pivot (arr, i, j) {
   let k = i + 1
   while (k <= j && arr[i] === arr[k]) {
     k++
@@ -12,7 +12,7 @@ function pivot (arr, i, j) {
   return k
 }
 
-function sort(arr, i, j, p) {
+function swap(arr, i, j, p) {
   var l = i, r = j;
   while (l <= r) {
     while (l <= j && arr[l] < p) {
@@ -33,11 +33,11 @@ function sort(arr, i, j, p) {
   return l;
 }
 
-var quicksort = function (arr, l, r) {
-  const p = pivot(arr, l, r)
+const quicksort = (arr, l, r) => {
+  const p = get_pivot(arr, l, r)
 
   if (p > -1) {
-    const k = sort(arr, l, r, arr[p])
+    const k = swap(arr, l, r, arr[p])
     quicksort(arr, l, k-1)
     quicksort(arr, k, r)
   }

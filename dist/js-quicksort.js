@@ -1,21 +1,22 @@
 'use strict';
 
-function pivot (arr, i, j) {
-  let k = i + 1;
+function get_pivot(arr, i, j) {
+  var k = i + 1;
   while (k <= j && arr[i] === arr[k]) {
     k++;
   }
   if (k > j) {
-    return -1
+    return -1;
   }
-  if (arr[i] >= arr[k]){
-    return i
+  if (arr[i] >= arr[k]) {
+    return i;
   }
-  return k
+  return k;
 }
 
-function sort(arr, i, j, p) {
-  var l = i, r = j;
+function swap(arr, i, j, p) {
+  var l = i,
+      r = j;
   while (l <= r) {
     while (l <= j && arr[l] < p) {
       l++;
@@ -24,9 +25,9 @@ function sort(arr, i, j, p) {
       r--;
     }
     if (l > r) {
-      break
+      break;
     }
-    const tmp = arr[l];
+    var tmp = arr[l];
     arr[l] = arr[r];
     arr[r] = tmp;
     l++;
@@ -35,14 +36,14 @@ function sort(arr, i, j, p) {
   return l;
 }
 
-var quicksort = function (arr, l, r) {
-  const p = pivot(arr, l, r);
+var quicksort = function quicksort(arr, l, r) {
+  var p = get_pivot(arr, l, r);
 
   if (p > -1) {
-    const k = sort(arr, l, r, arr[p]);
-    quicksort(arr, l, k-1);
+    var k = swap(arr, l, r, arr[p]);
+    quicksort(arr, l, k - 1);
     quicksort(arr, k, r);
   }
-  return arr
+  return arr;
 };
 module.exports = quicksort;
