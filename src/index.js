@@ -34,12 +34,14 @@ function partition(arr, i, j, p) {
   return l;
 }
 
-const quicksort = (arr, l, r) => {
-  const p = pivot(arr, l, r)
+const quicksort = (arr, l = null, r = null) => {
+  const _l = l === null ? 0 : l
+  const _r = r === null ? arr.length-1 : r
+  const p = pivot(arr, _l, _r)
   if (p > -1) {
-    const k = partition(arr, l, r, arr[p])
-    quicksort(arr, l, k-1)
-    quicksort(arr, k, r)
+    const k = partition(arr, _l, _r, arr[p])
+    quicksort(arr, _l, k-1)
+    quicksort(arr, k, _r)
   }
   return arr
 }

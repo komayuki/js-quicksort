@@ -8,7 +8,7 @@ describe('quicksort test', function () {
 
   it ('sort test1', function() {
     var list = [9,8,7,6,5,4,3,2,1]
-    var sorted = quickSort(list, 0, list.length-1)
+    var sorted = quickSort(list)
     expect(sorted).to.be.sorted()
   })
 
@@ -19,7 +19,7 @@ describe('quicksort test', function () {
       var x = Math.floor(Math.random() * (max - min + 1)) + min
       list.push(x)
     }
-    var sorted = quickSort(list, 0, list.length-1)
+    var sorted = quickSort(list)
     expect(sorted).to.be.sorted()
   })
 })

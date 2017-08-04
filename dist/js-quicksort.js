@@ -37,12 +37,17 @@ function partition(arr, i, j, p) {
   return l;
 }
 
-var quicksort = function quicksort(arr, l, r) {
-  var p = pivot(arr, l, r);
+var quicksort = function quicksort(arr) {
+  var l = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+  var r = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+
+  var _l = l === null ? 0 : l;
+  var _r = r === null ? arr.length - 1 : r;
+  var p = pivot(arr, _l, _r);
   if (p > -1) {
-    var k = partition(arr, l, r, arr[p]);
-    quicksort(arr, l, k - 1);
-    quicksort(arr, k, r);
+    var k = partition(arr, _l, _r, arr[p]);
+    quicksort(arr, _l, k - 1);
+    quicksort(arr, k, _r);
   }
   return arr;
 };
