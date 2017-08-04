@@ -1,10 +1,25 @@
-var assert = require('assert')
 var quickSort = require('../dist/js-quicksort')
+var chai = require("chai"),
+    expect = chai.expect;
+
+chai.use(require("chai-sorted"));
 
 describe('quicksort test', function () {
-  it ('test sort', function() {
+
+  it ('sort test1', function() {
     var list = [9,8,7,6,5,4,3,2,1]
     var sorted = quickSort(list, 0, list.length-1)
-    assert.equal(sorted, [1,2,3,4,5,6,7,8,9])
+    expect(sorted).to.be.sorted()
+  })
+
+  it ('sort test2', function() {
+    var [max, min, list] = [1000, 1, []]
+
+    for(var i=0; i < 500; i++) {
+      var x = Math.floor(Math.random() * (max - min + 1)) + min
+      list.push(x)
+    }
+    var sorted = quickSort(list, 0, list.length-1)
+    expect(sorted).to.be.sorted()
   })
 })
