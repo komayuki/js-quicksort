@@ -1,6 +1,6 @@
 'use strict';
 
-function get_pivot(arr, i, j) {
+function pivot(arr, i, j) {
   var k = i + 1;
   while (k <= j && arr[i] === arr[k]) {
     k++;
@@ -13,8 +13,9 @@ function get_pivot(arr, i, j) {
   }
   return k;
 }
+//var list = [2, 5, 1]
 
-function swap(arr, i, j, p) {
+function partition(arr, i, j, p) {
   var l = i,
       r = j;
   while (l <= r) {
@@ -31,16 +32,15 @@ function swap(arr, i, j, p) {
     arr[l] = arr[r];
     arr[r] = tmp;
     l++;
-    r++;
+    r--;
   }
   return l;
 }
 
 var quicksort = function quicksort(arr, l, r) {
-  var p = get_pivot(arr, l, r);
-
+  var p = pivot(arr, l, r);
   if (p > -1) {
-    var k = swap(arr, l, r, arr[p]);
+    var k = partition(arr, l, r, arr[p]);
     quicksort(arr, l, k - 1);
     quicksort(arr, k, r);
   }
