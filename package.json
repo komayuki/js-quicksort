@@ -1,6 +1,6 @@
 {
   "name": "js-quicksort",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "quick sort is sort algorithm",
   "main": "dist/js-quicksort.js",
   "dependencies": {
